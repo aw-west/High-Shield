@@ -51,8 +51,8 @@
 		}
 	</style>
 	<script>
-		// Carousel
-		let articleCurrent, articleNew, buttonCurrent, button, articleI
+		// Article Carousel
+		let articleCurrent, articleNew, articleButtonCurrent, articleButton, articleI
 		function display(articleID) {
 			if (articleID == 'prev') {articleID = '#1-'+(articleI-1)}
 			if (articleID == 'next') {articleID = '#1-'+(articleI+1)}
@@ -63,11 +63,11 @@
 				articleI = parseInt(articleCurrent.id.split('-')[1])
 				articleCurrent.classList.toggle('active')
 			}
-			button = document.getElementById(articleID+'button')
-			if (button !== undefined) {
-				if (buttonCurrent !== undefined) {buttonCurrent.classList.toggle('active')}
-				buttonCurrent = button
-				buttonCurrent.classList.toggle('active')
+			articleButton = document.getElementById(articleID+'button')
+			if (articleButton !== undefined) {
+				if (articleButtonCurrent !== undefined) {articleButtonCurrent.classList.toggle('active')}
+				articleButtonCurrent = articleButton
+				articleButtonCurrent.classList.toggle('active')
 			}
 		}
 		document.onkeydown = (event) => {
@@ -88,22 +88,22 @@
 			// sensitivity 4-7 suggested by SO/q/13278087
 		})
 
+		// Section Page
+		let section, sectionButton
 		function load(element) {
 			element.setAttribute('src', element.getAttribute('data-src'))
 			element.removeAttribute('data-src')
 		}
-		let section, button
-
 		function toggle(id) {
 			if (section) {
 				section.style.display = 'none'
-				button.style.filter = 'invert(0)'
+				sectionButton.style.filter = 'invert(0)'
 			}
 			section = document.getElementById(id)
-			button = document.getElementById(id + '-button')
+			sectionButton = document.getElementById(id + '-button')
 			section.querySelectorAll('[data-src]').forEach(load)
 			section.style.display = 'flex'
-			button.style.filter = 'invert(.4)'
+			sectionButton.style.filter = 'invert(.4)'
 		}
 		document.addEventListener('DOMContentLoaded', () => toggle('home'))
 	</script>
