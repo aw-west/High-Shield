@@ -1,0 +1,10 @@
+User-Agent: *
+
+Disallow: /js/*.js
+Disallow: /cgi-bin/
+Disallow: /images/prettyPhoto/
+Disallow: /images/fullscreen/
+
+
+sitemap: http://www.highshield.co.uk/sitemap.xml
+
