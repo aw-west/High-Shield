@@ -43,7 +43,7 @@ Add OS Map: https://labs.os.uk/pages/
 		}
 
 		section img {
-			max-width: 48%;
+			max-width: 100%;
 			padding: 1%;
 			margin: auto;
 		}
@@ -53,8 +53,8 @@ Add OS Map: https://labs.os.uk/pages/
 		}
 
 		a {
-			color: inherit;
-			text-decoration: none;
+			/* color: inherit; */
+			/* text-decoration: none; */
 		}
 
 		h2 {
@@ -125,12 +125,14 @@ Add OS Map: https://labs.os.uk/pages/
 
 	<header style='position:relative;margin:auto;height:250px;'>
 		<img src='www/logo.png' alt='logo' style='position:absolute;left:50%;transform:translate(-50%,0)'>
-		<p
-			style='position:absolute;left:50%;transform:translate(-55%,110%);text-align:center;font-size:1.8em;font-style:oblique'>
-			High Shield<br>Cottage</h1>
+		<p style='position:absolute;left:50%;transform:translate(-55%,110%);text-align:center;font-size:1.8em;font-style:oblique'>
+			High Shield<br>Cottage
+		</p>
 	</header>
 
 	<menu style='text-align:center;display:flex;justify-content:space-around;max-width:60vh;margin:auto;'>
+		<button id='gallery-button' onclick='toggle("gallery")'>GalleryWIP</button>
+		<button id='attractions-button' onclick='toggle("attractions")'>AttractionsWIP</button>
 		<button id='home-button' onclick='toggle("home")'>Home</button>
 		<button id='location-button' onclick='toggle("location")'>Location</button>
 		<button id='amenities-button' onclick='toggle("amenities")'>Amenities</button>
@@ -138,6 +140,74 @@ Add OS Map: https://labs.os.uk/pages/
 	</menu>
 
 	<main>
+		<section id='gallery'>
+			<h3>New photos plan</h3>
+			<p>
+				<br>Try and retake all these photos
+				<br>Keep it square
+				<br>lots of light
+				<br>keep doors open
+				<br>get right into the corner
+				<br>from high up
+				<br>landscape unless stated
+				<br>(my rating of the current photos is in brackets)
+			</p>
+			<img loading="lazy" src='www/photos/Outside 004.webp' alt='Outside'>
+			High Shield Cottage framed by dry stone wall, with little of the main house. (current is great)
+			<img loading="lazy" src='www/photos/Livingroom 001.webp' alt='Livingroom'>
+			Living room looking large from high up with a view onto the dining table (current is ok)
+			<img loading="lazy" src='www/photos/Livingroom 003.webp' alt='Livingroom'>
+			living room from the opposite angle with the tv and fireplace (current is ok)
+			<img loading="lazy" src='www/photos/Bedroom 001.webp' alt='Bedroom'>
+			bedroom with light on, cosy red blanket, bedding, towels, avoid the ceiling light (current is great)
+			<img loading="lazy" src='www/photos/Bedroom 002.webp' alt='Bedroom'>
+			bedroom from the opposite angle, maybe with more bathroom door in view, and keep the bedding consistent (current is ok)
+			<img loading="lazy" src='www/airbnb/kitchen.webp' alt='Kitchen'>
+			kitchen from high up, making sure you get the "sink alcove" a little in view, open the hatch (current is bad - harsh shadows and poor colouring)
+			<img loading="lazy" src='www/photos/Kitchen 004.webp' alt='Kitchen'>
+			kitchen from lower with the map and bedroom, show off the ceiling height (current is ok)
+			<img loading="lazy" src='www/airbnb/bathroom.webp' alt='Outside'>
+			bathroom from high, probably portrait, take the towel off the door so you can get a wider picture (current is ok)
+			<img loading="lazy" src='www/photos/Outside 003.webp' alt='Outside'>
+			aesthetic patio with sun, just needs a cocktail (current is great)
+			<img loading="lazy" src='www/photos/Livingroom 004.webp' alt='Livingroom'>
+			fireplace from low, looking up with chopped wood not heatlogs, you're great at staging the fire (current is great)
+			<img loading="lazy" src='www/photos/Livingroom 005.webp' alt='Livingroom'>
+			Any window framing the valley (current is good)
+			<img loading="lazy" src='www/airbnb/charger.webp' alt='Outside'>
+			ev-charger looking lovely next to round stones and the bush (current is good) [this implies guest can use this]
+			<img loading="lazy" src='www/photos/Outside 005.webp' alt='Outside'>
+			Vindolanda from High Shield, might be a hard one to recreate (current is great)
+			<img loading="lazy" src='https://upload.wikimedia.org/wikipedia/commons/5/56/Sycamore_Gap_Tree.jpg'>
+			Sycamore Gap, with cliffs (stunning but we can't use this one)
+			<img loading="lazy" src='www/photos/Outside 006.webp' alt='Outside'>
+			"High Shield" "1999", showing off the masonry and gate framing (current is great)
+		</section>
+		<section id='attractions'>
+			<article>
+				<h3>Hadrian’s Wall</h3>
+				photo of sycamore gap
+			</article>
+			<article>
+				<h3><a href='https://www.vindolanda.com/'>Vindolanda</a></h3>
+				<img loading="lazy" src='www/photos/Outside 005.webp' alt='Outside'>
+			</article>
+			<article>
+				<h3><a href='https://www.gonortheast.co.uk/ad122/'>AD122 Bus</a></h3>
+			</article>
+			<article>
+				<h3><a href='https://www.sustrans.org.uk/find-other-routes/hadrians-cycleway'>Sustrans 72</a></h3>
+			</article>
+			<article>
+				<h3>Other Link Ideas</h3>
+				<br><br>https://www.visitnorthumberland.com/self-catering/old-high-shield
+				<br><br>http://www.hello-northumbria.co.uk/old-high-shield-bardon-mill
+				<br><br>https://bardon-mill.cylex-uk.co.uk/company/old-high-shield-self-catering-cottage-22988172.html
+				<br><br>https://www.northumberlandnationalpark.org.uk/
+				<br><br>https://www.ordnancesurvey.co.uk/business-and-government/help-and-support/web-services/os-openspace/web-map-builder.html
+			</article>
+
+		</section>
 		<section id='home'>
 			<article>
 				<h3>Self-catering Accomodation</h3>
@@ -160,24 +230,6 @@ Add OS Map: https://labs.os.uk/pages/
 					from the local market town of Hexham along the B6318 Military Road to the Once Brewed Visitors
 					Centre one mile west of the cottage.</p>
 			</article>
-			<img loading="lazy" src='www/Livingroom 005.webp' alt='Livingroom'>
-			<img loading="lazy" src='www/Bathroom 001.webp' alt='Bathroom'>
-			<img loading="lazy" src='www/Bedroom 001.webp' alt='Bedroom'>
-			<img loading="lazy" src='www/Bedroom 002.webp' alt='Bedroom'>
-			<img loading="lazy" src='www/Kitchen 001.webp' alt='Kitchen'>
-			<img loading="lazy" src='www/Kitchen 002.webp' alt='Kitchen'>
-			<img loading="lazy" src='www/Kitchen 003.webp' alt='Kitchen'>
-			<img loading="lazy" src='www/Kitchen 004.webp' alt='Kitchen'>
-			<img loading="lazy" src='www/Livingroom 001.webp' alt='Livingroom'>
-			<img loading="lazy" src='www/Livingroom 002.webp' alt='Livingroom'>
-			<img loading="lazy" src='www/Livingroom 003.webp' alt='Livingroom'>
-			<img loading="lazy" src='www/Livingroom 004.webp' alt='Livingroom'>
-			<img loading="lazy" src='www/Outside 001.webp' alt='Outside'>
-			<img loading="lazy" src='www/Outside 002.webp' alt='Outside'>
-			<img loading="lazy" src='www/Outside 003.webp' alt='Outside'>
-			<img loading="lazy" src='www/Outside 004.webp' alt='Outside'>
-			<img loading="lazy" src='www/Outside 005.webp' alt='Outside'>
-			<img loading="lazy" src='www/Outside 006.webp' alt='Outside'>
 		</section>
 		<section id='location'>
 			<article>
@@ -438,9 +490,9 @@ Add OS Map: https://labs.os.uk/pages/
 		</section>
 	</main>
 
-	<footer style='height:.8em;font-size:.8em;text-align:right;padding:1vh;bottom:0;'>
+	<!-- <footer style='height:.8em;font-size:.8em;text-align:right;padding:1vh;bottom:0;'>
 		Homemade
-	</footer>
+	</footer> -->
 
 </body>
 
