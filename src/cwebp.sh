@@ -1,0 +1,1 @@
+find ./src/img/ | egrep '.jpeg|.jpg|.tiff|.tif|.png' | parallel --progress 'cwebp -quiet -af {} -o ./docs/www/{/.}.webp'

@@ -1,95 +1,447 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Old High shield Cottage on Hadrian's Wall, Northumberland UK</title>
-<style type="text/css">
-<!--
-body {
-	margin-top: 0px;
-	margin-bottom: 0px;
-}
-.style1 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-}
-.style2 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; }
-body,td,th {
-	color: #FFFFFF;
-}
-a:link {
-	color: #FFFFFF;
-}
-a:visited {
-	color: #FFFFFF;
-}
-a:hover {
-	color: #FF6600;
-}
-a:active {
-	color: #FFFFFF;
-}
-.style3 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; }
-.style5 {font-family: calibri; font-size: 16px; }
-.style9 {color: #993300}
-.style10 {font-size: 16px}
+<!DOCTYPE html>
+<!-- TODO
+Add OS Map: https://labs.os.uk/pages/
 -->
-</style>
+
+<html>
+
+<head>
+	<title>High Shield Cottage</title>
+	<meta charset='utf-8' name='viewport' content='width=device-width, initial-scale=1' />
+	<link rel='icon' href='www/logo-sq.png' />
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Josefin+Sans' />
+	<style>
+		* {
+			font-family: 'Josefin Sans';
+			font-weight: lighter;
+
+			/* background: rgba(0, 0, 0, .1); */
+			/* opacity: .9; */
+		}
+
+		menu button {
+			border: none;
+			outline: none;
+			padding: .2em;
+			font-size: 1.2em;
+		}
+
+		menu button:hover {
+			filter: invert(.8);
+		}
+
+		section {
+			display: none;
+			margin: auto;
+			max-width: 80vh;
+			flex-wrap: wrap;
+		}
+
+		section article {
+			flex: 1;
+			min-width: 210px;
+		}
+
+		section img {
+			max-width: 48%;
+			padding: 1%;
+			margin: auto;
+		}
+
+		article {
+			margin: .5em;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		h2 {
+			font-size: 1em;
+			text-align: center;
+		}
+	</style>
+	<script>
+		// Article Carousel
+		let articleCurrent, articleNew, articleButtonCurrent, articleButton, articleI
+		function display(articleID) {
+			if (articleID == 'prev') { articleID = '#1-' + (articleI - 1) }
+			if (articleID == 'next') { articleID = '#1-' + (articleI + 1) }
+			articleNew = document.getElementById(articleID)
+			if (articleNew !== undefined) {
+				if (articleCurrent !== undefined) { articleCurrent.classList.toggle('active') }
+				articleCurrent = articleNew
+				articleI = parseInt(articleCurrent.id.split('-')[1])
+				articleCurrent.classList.toggle('active')
+			}
+			articleButton = document.getElementById(articleID + 'button')
+			if (articleButton !== undefined) {
+				if (articleButtonCurrent !== undefined) { articleButtonCurrent.classList.toggle('active') }
+				articleButtonCurrent = articleButton
+				articleButtonCurrent.classList.toggle('active')
+			}
+		}
+		document.onkeydown = (event) => {
+			if (event.which == 37) { display('prev') }
+			if (event.which == 39) { display('next') }
+		}
+		let touchstartX, touchendX, touchstartY, touchendY, ratio
+		document.addEventListener('touchstart', (event) => {
+			touchstartX = event.changedTouches[0].screenX
+			touchstartY = event.changedTouches[0].screenY
+		})
+		document.addEventListener('touchend', (event) => {
+			touchendX = event.changedTouches[0].screenX
+			touchendY = event.changedTouches[0].screenY
+			ratio = (touchendX - touchstartX) / (touchendY - touchstartY)
+			if (5 < ratio) { display('prev') }
+			if (ratio < -5) { display('next') }
+			// sensitivity 4-7 suggested by SO/q/13278087
+		})
+
+		// Section Page
+		let section, sectionButton
+		function load(element) {
+			element.setAttribute('src', element.getAttribute('data-src'))
+			element.removeAttribute('data-src')
+		}
+		function toggle(id) {
+			if (section) {
+				section.style.display = 'none'
+				sectionButton.style.filter = 'invert(0)'
+			}
+			section = document.getElementById(id)
+			sectionButton = document.getElementById(id + '-button')
+			section.querySelectorAll('[data-src]').forEach(load)
+			section.style.display = 'flex'
+			sectionButton.style.filter = 'invert(.4)'
+		}
+		document.addEventListener('DOMContentLoaded', () => toggle('home'))
+	</script>
 </head>
 
-<body>
-<table width="970" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td background="images/leftshadow.jpg">&nbsp;</td>
-    <td valign="top"><table width="950" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td><img src="images/header01.jpg" alt="Old High Shield Cottage" width="951" height="273" /></td>
-      </tr>
-      <tr>
-        <td><img src="images/menu.jpg" alt="Contact Details" width="951" height="31" border="0" usemap="#Map" href="eviivo link" /></td>
-      </tr>
-      <tr>
-        <td background="images/bg.jpg"><table width="950" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="40">&nbsp;</td>
-            <td width="871"><br />
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td width="68%" valign="top"><h1 class="style2">Old High Shield Cottage, Hadrian's Wall, Northumberland</h1>
-                    <p class="style5">Old High Shield Cottage is a spacious single storey building that provides self-catered accommodation for two people. The cottage offers visitors exceptional views and easy access to many remarkable attractions.</p>
-<p class="style5">Local written records provide evidence that there was a working farm on the site in the late 1700s. While archaeological evidence of a medieval stacking stand and aerial photography hinting at the remains of two earlier dwellings suggest earlier activity on the site. However, the site was abandoned in the 1930s with buildings irregularly used as a byre. In 1994 the property was restored to the condition that it is in today.</p>
-<p class="style5">The cottage is located half way along Hadrian&rsquo;s Wall, lying  half a mile south of where the wall crosses the Pennines near Rapishaw Gap. This stretch of the Wall follows the natural line of the Whin Sill, a dramatic escarpment of ancient igneous rock. Many of the Wall&rsquo;s most iconic sites are found within easy walking distance of the cottage. From the cottage you can walk north to Hadrian&rsquo;s Wall or to the south to Vindolanda, the village of Bardon Mill and onto the river Tyne. </p>
-                    <p class="style5">Getting to Old High Shield Cottage is easy. The cottage lies a few miles north of the A69 main and on the Roman military road. Regional train and bus services run to the local village of Bardon Mill and from there it is a 45 minute cross-country walk. In the summer, the 122AD Hadrian's Wall Bus runs from the local market town of Hexham along the B6318 Military Road to the Once Brewed Visitors Centre one mile west of the cottage.</p>
-                    <p class="style1"><img src="images/logos.png" alt="logos" width="594" height="71" /></p>
-                    <p class="style3">Old High Shield Cottage - self catered holiday cottage accommodation | ancora imparo</p>
-<p class="style3" style="margin-bottom: 0;">Bardon Mill, Northumberland, NE47 7AJ, UK | 0044 (0) 7714 257048 | enquiries@highshield.co.uk<br />
-</p></td>
-                  <td width="1%">&nbsp;</td>
-                  <td width="31%" valign="top" bgcolor="#A3B094"><div align="center" class="style2"><img src="images/homepics.png" alt="Log fire, spacious living area" width="250" height="348" hspace="5" vspace="10" /><br />
-                    <img src="images/IMG_8805.jpg" alt="highshield" width="250" height="132" /></div></td>
-                </tr>
-              </table>
-              <span class="style3"><br />
-              <span class="style9">A recent Z-study identified a wide range of meadow species in our hay fields, including yellow rattle, hairbell, bugle and cuckoo flower grasses </span></span></td>
-            <td width="39">&nbsp;</td>
-          </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td><img src="images/footer.jpg" alt="Old High Shield, Northumberlsnd UK" width="951" height="116" border="0" /></td>
-      </tr>
-    </table></td>
-    <td background="images/rightshadow.jpg">&nbsp;</td>
-  </tr>
-</table>
+<body style='width:100vw;height:100vh'>
 
-<map name="Map" id="Map">
-  <area shape="rect" coords="35,2,191,29" href="index.html" alt="Welcome to Old High Shield Cottage" />
-<area shape="rect" coords="200,5,334,27" href="accommodation.html" alt="The Accommodation" />
-<area shape="rect" coords="347,7,409,23" href="thingstodo.html" alt="Things to do" />
-<area shape="rect" coords="418,5,522,25" href="contact.html" alt="Contact Detaols" />
-<area shape="rect" coords="534,6,672,26" href="location.html" alt="Location and Directions" />
-<area shape="rect" coords="684,4,835,26" href="bookings.html" alt="Availability and Bookings" />
-</map>
+	<header style='position:relative;margin:auto;height:250px;'>
+		<img src='www/logo.png' alt='logo' style='position:absolute;left:50%;transform:translate(-50%,0)'>
+		<p
+			style='position:absolute;left:50%;transform:translate(-55%,110%);text-align:center;font-size:1.8em;font-style:oblique'>
+			High Shield<br>Cottage</h1>
+	</header>
+
+	<menu style='text-align:center;display:flex;justify-content:space-around;max-width:60vh;margin:auto;'>
+		<button id='home-button' onclick='toggle("home")'>Home</button>
+		<button id='location-button' onclick='toggle("location")'>Location</button>
+		<button id='amenities-button' onclick='toggle("amenities")'>Amenities</button>
+		<button id='booking-button' onclick='toggle("booking")'>Booking</button>
+	</menu>
+
+	<main>
+		<section id='home'>
+			<article>
+				<h3>Self-catering Accomodation</h3>
+				<p>High Shield Cottage is a spacious single storey building that provides self-catered accommodation for
+					two people. The cottage offers visitors exceptional views and easy access to many remarkable
+					attractions.</p>
+				<p>Local written records provide evidence that there was a working farm on the site in the late 1700s.
+					While archaeological evidence of a medieval stacking stand and aerial photography hinting at the
+					remains of two earlier dwellings suggest earlier activity on the site. However, the site was
+					abandoned in the 1930s with buildings irregularly used as a byre. In 1994 the property was restored
+					to the condition that it is in today.</p>
+				<p>The cottage is located half way along Hadrian’s Wall, lying half a mile south of where the wall
+					crosses the Pennines near Rapishaw Gap. This stretch of the Wall follows the natural line of the
+					Whin Sill, a dramatic escarpment of ancient igneous rock. Many of the Wall’s most iconic sites are
+					found within easy walking distance of the cottage. From the cottage you can walk north to Hadrian’s
+					Wall or to the south to Vindolanda, the village of Bardon Mill and onto the river Tyne.</p>
+				<p>Getting to Old High Shield Cottage is easy. The cottage lies a few miles north of the A69 main and on
+					the Roman military road. Regional train and bus services run to the local village of Bardon Mill and
+					from there it is a 45 minute cross-country walk. In the summer, the 122AD Hadrian's Wall Bus runs
+					from the local market town of Hexham along the B6318 Military Road to the Once Brewed Visitors
+					Centre one mile west of the cottage.</p>
+			</article>
+			<img src='www/Livingroom 005.webp' alt='Livingroom'>
+			<img src='www/Bathroom 001.webp' alt='Bathroom'>
+			<img src='www/Bedroom 001.webp' alt='Bedroom'>
+			<img src='www/Bedroom 002.webp' alt='Bedroom'>
+			<img src='www/Kitchen 001.webp' alt='Kitchen'>
+			<img src='www/Kitchen 002.webp' alt='Kitchen'>
+			<img src='www/Kitchen 003.webp' alt='Kitchen'>
+			<img src='www/Kitchen 004.webp' alt='Kitchen'>
+			<img src='www/Livingroom 001.webp' alt='Livingroom'>
+			<img src='www/Livingroom 002.webp' alt='Livingroom'>
+			<img src='www/Livingroom 003.webp' alt='Livingroom'>
+			<img src='www/Livingroom 004.webp' alt='Livingroom'>
+			<img src='www/Outside 001.webp' alt='Outside'>
+			<img src='www/Outside 002.webp' alt='Outside'>
+			<img src='www/Outside 003.webp' alt='Outside'>
+			<img src='www/Outside 004.webp' alt='Outside'>
+			<img src='www/Outside 005.webp' alt='Outside'>
+			<img src='www/Outside 006.webp' alt='Outside'>
+		</section>
+		<section id='location'>
+			<article>
+				<h3>Hadrian’s Wall</h3>
+				<p>Hadrian’s Wall is almost 1900 years old and stretches 73 miles across the north of England from
+					Bowness-on-Solway to Wallsend on the river Tyne. It took three legions just over six years to build.
+					Hadrian’s Wall is probably the most important Roman monument to have survived in Britain and has
+					been awarded World Heritage Site status.</p>
+				<p>Old High Shield is situated half way along the wall, lying just half a mile south of its highest
+					point where Hadrian’s Wall crosses the Pennines close to Rapishaw Gap. It is at this point that the
+					wall follows the natural line of the Whin Sill, a dramatic escarpment of ancient igneous rock. The
+					surrounding countryside is spectacular and many of the wall’s favourite views are to be found in
+					this area.</p>
+				<p>Various forts, milecastles and turrets can still be seen along the length of the wall, as well as the
+					ditch to the north and the great Vallum earthworks to the south (the course of the Vallum crosses
+					the entrance road to High Shield). Sycamore Gap, used in the 1991 film Robin Hood: Prince of Thieves
+					is half a mile west.</p>
+				<p style='text-align:right'><a href='https://hadrianswallcountry.co.uk/'>more information</a></p>
+			</article>
+			<article>
+				<h3>Housesteads Roman Fort (Vercovicium)</h3>
+				<p>Housesteads is only 2 miles from High Shield and is the best preserved of the sixteen outposts along
+					Hadrian’s Wall. It has spectacular views of the surrounding countryside, a museum and ruins that
+					include the four double-portal gateways and perimeter wall, granaries, barracks, under floor heating
+					system and some of the earliest known flushing toilets.</p>
+				<p>After visiting Housesteads Roman fort, why not explore more of Hadrian's Wall and experience the
+					romance of this famous monument? Now a World Heritage Site, Hadrian's Wall spans 73 miles of
+					beautiful British countryside. Walk around the many forts, turrets and mile castles that span the
+					Wall, and absorb 2,000 years of history.</p>
+				<p style='text-align:right'><a
+						href='https://www.english-heritage.org.uk/visit/places/housesteads-roman-fort-hadrians-wall/'>more
+						information</a></p>
+			</article>
+			<article>
+				<h3>Vindolanda</h3>
+				<p>Vindolanda lies half a mile south of Old High Shield Cottage. The site of Vindolanda predates
+					Hadrian's Wall and was occupied from around AD 85. The fort was built to guard the central section
+					of the vital east to west supply route, now known as the Stanegate. Following construction of the
+					wall, around forty years later, Vindolanda became a wall fort. Visitors to Vindolanda can view a
+					range of excavated remains including a bath house, barracks, officer’s residence and a temple. The
+					Vindolanda Tablets are among the most significant Roman artifacts to have been found anywhere in the
+					former Roman Empire</p>
+				<p>Vindolanda was occupied by the Roman army from around AD 85 when the first fort was built to guard
+					the central section of the vital east to west supply route, now known as the Stanegate. Some 40
+					years later when Hadrian’s Wall was built, Vindolanda became a Wall fort. Visitors can view a range
+					of excavated remains include a bath house, barracks, officer’s residence and temple. Vindolanda is
+					half a mile south of Old High Shield.</p>
+				<p>The museum displays a vast range of Roman artefacts including leather goods, textiles, wooden, bronze
+					and iron objects, as well as the slivers of wood covered in spidery ink writing. The translation of
+					these findings is providing primary evidence of everyday life in this area.</p>
+				<p style='text-align:right'><a href='https://www.vindolanda.com/'>more information</a></p>
+			</article>
+			<article>
+				<h3>Kielder Reservoir</h3>
+				<p>Home to northern Europe’s largest man-made lake and England's largest forest, Kielder Water & Forest
+					Park is one of Northumberland's best attractions.</p>
+				<p>It is perfect for individuals or families that love nature, water sports, exploring, walking, cycling
+					and much more.</p>
+				<p>Kielder Water & Forest Park features mile upon mile of purpose-built trails including forest walks
+					for all the family and dedicated mountain bike tracks. The Lakeside Way is a 26 mile multi-user
+					trail, suitable for walkers, cyclists, horse riders and wheelchair users, that encircles the
+					shoreline of Kielder Water.</p>
+				<p>A haven for wildlife, Kielder Water & Forest Park is also home to around 50% of England’s native red
+					squirrel population. In 2009 three chicks were born to a record breaking osprey couple - the first
+					birds for at least 200 years to successfully raise chicks in Northumberland. So far they have
+					returned to breed every year since. You can also spot otters, roe deer badgers and bats.</p>
+				<p>Waterskiing and sailing enthusiasts take to the water all year round and the lake offers a huge
+					challenge to keen trout anglers between March and October.</p>
+				<p style='text-align:right'><a href='http://www.visitkielder.com/'>more information</a></p>
+			</article>
+			<article>
+				<h3>Kielder Observatory</h3>
+				<p>A star gazers' heaven! The Park is lucky enough to have the darkest night skies in England, thanks to
+					minimal light pollution. Spectacular views from the observatory are best in summer while winter
+					nights are darker and better for star gazing.</p>
+				<p style='text-align:right'><a href='https://kielderobservatory.org/'>more information</a></p>
+			</article>
+			<article>
+				<h3>Haltwhistle</h3>
+				<p>Haltwhistle is a market town situated 5 miles from Old High Shield next to the South Tyne river. The
+					town has a market day on Thursday's. Geographically it claims to be the exact Centre of Britain.</p>
+				<p> During its turbulent past the area suffered from feuding and raiding from the Border Reivers and
+					many buildings in the area were heavily fortified. Just behind the Market Square is Holy Cross
+					Church, a fine example of early 13th century architecture with a Burne-Jones painted chancel roof
+					and William Morris windows. </p>
+				<p> The town has a leisure centre and heated outdoor swimming pool in the summer months. </p>
+				<p style='text-align:right'><a href='https://haltwhistle.org/'>more information</a></p>
+			</article>
+			<article>
+				<h3> Hexham </h3>
+				<p> The bustling market town of Hexham is situated in the Tyne valley 12 miles from Old High Shield.
+					Hexham Abbey dates from 674AD and is a must for any visitor. </p>
+				<p> The town's market is held every Tuesday. It has a wide variety of pubs and restaurants, the <a
+						href='https://www.queenshall.co.uk/'>Queen’s Hall Arts Centre</a>, a museum, library, cinema and
+					theatre. </p>
+				<p> It has a good variety of shops including Waitrose, Tesco’s and Marks & Spencer and food can be
+					ordered online for delivery to Old High Shield. </p>
+				<p style='text-align:right'><a href='https://www.visithexham.net/'>more information</a></p>
+			</article>
+			<article>
+				<h3> Rambling </h3>
+				<p> The area boasts a wide variety of walks ranging from the Hadrian’s Wall National Trail and the
+					Pennine Way to short circular routes. For example the wall itself is only a short half mile walk
+					away where it joins the circular route around Cragg Lough. Burndivot Common provides the right to
+					roam over 400 acres of wild remote countryside and is of special scientific interest and where High
+					Shield has Common grazing Rights. </p>
+				<p style='text-align:right'><a
+						href='https://www.nationaltrail.co.uk/en_GB/trails/hadrians-wall-path/'>more information</a></p>
+			</article>
+			<article>
+				<h3> Rock climbing </h3>
+				<p> The cliffs of High Shield Craggs and Steel Rigg provide perfect bouldering opportunities for
+					competent climbers. </p>
+			</article>
+			<article>
+				<h3> Bird watching and wildlife </h3>
+				<p> At High Shield curlews, swallows, owls and buzzards can be seen. Grindon Lough is a popular spot
+					situated two miles east for taking pictures. Also look out for deer,badgers and boxing hares during
+					springtime. </p>
+				<p> It is not uncommon to see curlews, swallows, owls and buzzards from Old High Shield Cottage. While
+					Grindon Lough, situated two miles east, is a popular spot for bird photography. Also look out for
+					deer, badgers and boxing hares during springtime (Visit Northumberland). </p>
+				<p> Kielder Water & Forest Park is also home to around 50 per cent of England’s native red squirrel
+					population. While in 2009 three chicks were born to a record breaking osprey couple - the first
+					birds for at least 200 years to successfully raise chicks in Northumberland. So far they have
+					returned to breed every year since. You can also spot otters, roe deer badgers and bats. </p>
+				<p style='text-align:right'><a
+						href='https://www.visitnorthumberland.com/nature-outdoors/birdwatching'>more information</a></p>
+			</article>
+			<article>
+				<h3> The Sill </h3>
+				<p style='text-align:right'><a href='https://www.thesill.org.uk/visit/'>more information</a></p>
+			</article>
+			<article>
+				<h3> Cycling </h3>
+				<p> There are numerous local routes for cyclists and the Stanegate route is popular. </p>
+				<p> The Hadrian's Cycleway (National Route 72) runs from Ravenglass to South Shields via the Cumbrian
+					Coast, Carlisle and Hexham. </p>
+				<p> The Pennine Cycleway (National Route 68) runs from Derby to Berwick-upon-Tweed, however enters
+					Northumberland from Cumbria. The route finishes at Berwick-on-Tweed after running through
+					Haltwhistle, Bellingham and Wooler. Bicycles can be rented from us. </p>
+				<p> South East Northumberland cycle map - available from Sustrans or Northumberland CC, tel: 0808
+					1008910 - Belford Area Map - available from Sustrans, tel: 0845 113 0065 </p>
+				<p style='text-align:right'><a href='http://www.sustrans.org.uk/'>more information</a></p>
+			</article>
+			<article>
+				<h3> Fishing </h3>
+				<p> The North Tyne river provides first class salmon and sea trout fishing. Many clubs sell day permits
+					to visitors. </p>
+			</article>
+			<article>
+				<h3> Further afield </h3>
+				<p> Further afield, numerous attractions are within comfortable driving distance of Old High Shield
+					Cottage. In Northumberland popular attractions include Alnwick Gardens, Bamburgh Castle, Belsay Hall
+					and Gardens, Chester's Roman fort, Craggside, Lindisfarne Abbey and Wallington Hall. In Cumbria the
+					Lake District and Carlisle Castle are well worth visiting. Similarly, Jedburgh Abbey and Hermitage
+					Cottage in the Scottish Borders are impressive monuments to the medieval history of the borderlands.
+					While Newcastle and Gateshead host popular cultural sites like the Sage Gateshead, the Baltic
+					Gallery and the Empire Theatre. </p>
+			</article>
+		</section>
+		<section id='amenities'>
+			<article>
+				<h3>Location</h3>
+				<p>High Shield Cottage is situated a few hundred yards south of the B6318 (known locally as the Military
+					Road) and a few miles north of the A69. Local villages and market towns include Bardon Mill 2 miles
+					to the south, Haltwhistle 5 miles to the west and Hexham 13 miles to the south east. The cottage is
+					situated between Carlisle 25 miles to the west and Newcastle 31 miles to the east.</p>
+				<p>From Old High Shield you can walk north and south along a prehistoric route where depending on the
+					time of year, day and light you might be able to make out Bronze Age hut circles and settlements.
+					This path takes you to Hadrian’s Wall to the north, or Vindolanda and the South Tyne at Bardon Mill
+					to the south.</p>
+				<p>Getting to Old High Shield is easy by both public and private transport. Regional train and bus
+					services run to the local village of Bardon Mill, from there it is a 45 minute cross-country walk to
+					the cottage. During summer months, the Hadrian's Wall 122AD bus starts from the tourist information
+					centre in Hexham and runs along the Military Road. The bus will stop at Once Brewed Visitors Centre,
+					one mile west of the cottage, or can be stopped on demand when it's safe to do so.</p>
+			</article>
+			<iframe
+				data-src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d555551.0450221491!2d-2.2836930715894534!3d54.81224387468901!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe9683456bf255036!2sHigh%20Shield%20Cottage!5e0!3m2!1sen!2suk!4v1594659256378!5m2!1sen!2suk'
+				frameborder='0' width='420px' height='370px' style='flex:0 0 420px'></iframe>
+			<iframe data-src='https://www.google.com/maps/d/embed?mid=1P2q6fnaNSIp2h4z7EXcB6tCLZ-ungyO6' frameborder='0'
+				width='420px' height='370px' style='flex:0 0 420px'></iframe>
+			<article>
+				<h3>Bus, A122</h3>
+				<p>Request stop, at the bottom of the drive.</p>
+				<h3>Train, Newcastle - Carlisle</h3>
+				<p>A half hour walk, through fields and past Vindolanda.</p>
+				<h3>Car</h3>
+			</article>
+		</section>
+		<section id='booking'>
+			<article>
+				<h3>Book Direct</h3>
+				<p>£80 + £80/night</p>
+				<p>Payment options include PayPal, cheque, bank transfer, or Airbnb (with additional service fee).</p>
+				<br>
+				<h2>enquiries@highshield.co.uk</h2>
+				<br>
+				<h2>0044 (0)7 714 257 048</h2>
+				<h3>Includes</h3>
+				<p>This price includes basic amenities, such as bed linen, towels, electricity, fuel for the fire,
+					wireless internet and smart TV.</p>
+			</article>
+			<article style='overflow:hidden;height:370px;flex:0 0 420px'>
+				<iframe data-src='https://www.airbnb.co.uk/embeddable/home?id=309005' frameborder='0' width='1000'
+					height='1000' scrolling='no'
+					style='position:relative;top:-17px;left:-9px;max-width:1000px;max-height:1000px;'></iframe>
+			</article>
+			<iframe
+				data-src='https://open-web-calendar.herokuapp.com/calendar.html?url=https%3A%2F%2Fwww.airbnb.co.uk%2Fcalendar%2Fical%2F309005.ics%3Fs%3D83c4bfd5e9ce29a2aeebf9d79c01567c&amp;skin=dhtmlxscheduler_flat.css&amp;target&amp;title=High Shield Cottage&amp;loader&amp;tabs&amp;controls=[next,previous,date]'
+				frameborder='0' width='420px' height='370px'
+				style='flex:0 0 420px'>https://www.airbnb.co.uk/calendar/ical/309005.ics?s=83c4bfd5e9ce29a2aeebf9d79c01567c</iframe>
+			<article></article>
+			<article>
+				<h3>Policies</h3>
+				<li>Children Policy: Adults only</li>
+				<li>Smoking Policy: No smoking</li>
+				<li>Pet Policy: No pets</li>
+				<h3>Booking Terms</h3>
+				<li>A booking will only be secured once the deposit of 25% has been received.</li>
+				<li>The balance must be paid in full at least 8 weeks prior to the start of the holiday or at the time
+					of booking if made less than 8 weeks before. If the balance is not paid by the appropriate date, we
+					reserve the right to treat the booking as cancelled by you and seek to re-let it.</li>
+				<li>If for any reason you decide to cancel your booking, please contact us immediately. We will try to
+					re-let the booking. If successful all monies paid less £20 to cover administrative costs will be
+					refunded. However, if unsuccessful all monies paid to date will be forfeited. Please note that if
+					you are concerned about the possibility of cancelling your booking for reasons beyond your control
+					e.g. illness, you should consider taking out holiday cancellation insurance.</li>
+				<li>If for any reason an event occurs rendering Old High Shield Cottage unfit for your holiday, we
+					reserve the right to cancel the booking. All monies received will be fully refunded. However, under
+					no circumstances will further compensation be payable.</li>
+				<h3>Conditions</h3>
+				<li>Unless specifically agreed you will be able to gain access to the property from 3.00pm on the first
+					day of your holiday and you must vacate it no later than 10.00am on the last day.</li>
+				<li>You will not permit more than two persons to stay at Old High Shield Cottage and will not allow
+					smoking or pets inside the property.</li>
+				<li>You will take good care of Old High Shield Cottage and agree to leave its contents, fixtures and
+					fittings in the same condition that they were in at the start of your holiday.</li>
+				<li>You will accept responsibility for the cost of rectifying any damage caused by you or any visitors
+					as well as the cost of any additional cleaning that is necessary to return the premises to the
+					conditions that existed at the start of your holiday.</li>
+				<li>You undertake that you and any visitor to the property during your holiday will abide by these terms
+					and conditions. You accept total responsibility for their actions.</li>
+				<li>You will allow us, or our representatives, access to Old High Shield Cottage at any reasonable time
+					for maintenance or inspection. Wherever possible this will be by prior arrangement.</li>
+				<li>If you experience any problems in the property, you will notify us immediately.</li>
+				<li>At the end of your stay you will leave all keys inside the property in the manner requested.</li>
+				<li>Your statutory rights are not affected by anything contained within these booking conditions.</li>
+				<h3>Accessibility information</h3>
+				<li>Mobility Impaired: Old High Shield Cottage may be suitable for guests who have difficulty with
+					stairs as it is on one level.</li>
+				<li>Visually Impaired: Unfortunately we have no specific facilities for those who have visual impairment
+				</li>
+				<li>Hearing Impaired: Unfortunately we have no specific facilities for those with hearing impairment
+				</li>
+			</article>
+		</section>
+	</main>
+
+	<footer style='height:.8em;font-size:.8em;text-align:right;padding:1vh;bottom:0;'>
+		Homemade
+	</footer>
+
 </body>
+
 </html>
