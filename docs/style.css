@@ -11,7 +11,7 @@ img {
 }
 body {
 	font-family: 'Josefin Sans';
-	width: calc(min(600px, 100vw));
+	width: calc(min(1200px, 100vw));
 	margin: auto;
 }
 header {
@@ -51,6 +51,9 @@ footer {
 }
 
 
+#gallery {
+	height: calc(.75 * min(100vw, 1200px));
+}
 #gallery img {
 	opacity: 0;
 	transition: opacity ease-in-out .2s;
