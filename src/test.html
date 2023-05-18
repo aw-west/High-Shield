@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>High Shield Cottage</title>
+		<meta charset="UTF-8">
+		<link rel='icon' href='www/logo.png' />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Font -->
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Josefin+Sans' />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!-- Map -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+		<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+		<script src="https://cdn.jsdelivr.net/npm/osmtogeojson@3.0.0-beta.5/osmtogeojson.min.js"></script>
+		<!-- Email -->
+		<!-- <script src="https://smtpjs.com/v3/smtp.js"></script> -->
+		<style>
+			* {
+				background: #0001;
+			}
+			body {
+				font-family: 'Josefin Sans';
+				width: calc(min(600px, 100vw - 10px));
+				margin: auto;
+			}
+			img {
+				max-width: 100%;
+				max-height: 100%;
+			}
+
+			.nav {
+				margin: 0 20px 20px 20px;
+				background-color: #0001;
+				padding: 3px 5px 0 5px;
+				border-radius: 5px;
+				color: #000;
+				text-decoration: none;
+			}
+			.nav:hover {
+				filter: invert(.2);
+			}
+			.nav.active {
+				filter: invert(.4);
+			}
+
+			section {
+				height: 0;
+				opacity: 0;
+			}
+			section.active {
+				height: 100%;
+				opacity: 1;
+			}
+
+			.icon {
+				width: 80px;
+				text-align: center;
+			}
+
+			#gallery img {
+				height: 0;
+				opacity: 0;
+				transition: opacity ease-in-out .2s;
+			}
+			#gallery img.active {
+				height: auto;
+				opacity: 1;
+			}
+
+			footer {
+				height: 40px;
+				text-align: right;
+			}
+			footer img {
+				margin: 0 10px 0 0;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div style="display:flex;align-items:center;height:4em;margin:10px">
+				<img src="www/logo.png" alt="logo">
+				<p style="font-size:2em;margin:10px">High Shield<br>Cottage</p>
+			</div>
+			<div style="display:flex;justify-content:center;font-size:1.2em">
+				<a class='nav' href="#home">Home</a>
+				<a class='nav' href="#location">Location</a>
+				<a class='nav' href="#booking">Booking</a>
+			</div>
+		</header>
+		<main>
+			<section id="home" class="xactive">
+				<div>
+					<p><b>4&starf;&nbsp;Self-catering Accomodation,</b> in Northumberland National Park and walking distance of Hadrian's Wall.</p>
+				</div>
+				<div style="display:flex;justify-content:center">
+					<div class="icon"><i class="fa-solid fa-user fa-xl"></i><p>2</p></div>
+					<div class="icon"><i class="fa-solid fa-house fa-xl"></i><p>Entire House</p></div>
+					<div class="icon"><i class="fa-solid fa-bed fa-xl"></i><p>1</p></div>
+					<div class="icon"><i class="fa-solid fa-bath fa-xl"></i><p>1</p></div>
+				</div>
+				<div id="gallery">
+					<img src='www/gallery/house.webp' alt='House'>
+					<img src='www/gallery/livingroom1.webp' alt='Livingroom'>
+					<img src='www/gallery/livingroom2.webp' alt='Livingroom'>
+					<img src='www/gallery/bedroom1.webp' alt='Bedroom'>
+					<img src='www/gallery/bedroom2.webp' alt='Bedroom'>
+					<img src='www/gallery/kitchen1.webp' alt='Kitchen'>
+					<img src='www/gallery/kitchen2.webp' alt='Kitchen'>
+					<img src='www/gallery/bathroom.webp' alt='Outside'>
+					<img src='www/gallery/patio.webp' alt='Outside'>
+					<img src='www/gallery/fire.webp' alt='Livingroom'>
+					<!-- <img src='www/gallery/window.webp' alt='Livingroom'> -->
+					<!-- <img src='www/gallery/charger.webp' alt='Outside'> -->
+					<!-- <img src='www/gallery/gate.webp' alt='Outside'> -->
+				</div>
+			</section>
+			<section id="location" class="xactive">
+				<div style="display:flex;justify-content:center">
+					<div class="icon"><i class="fa-solid fa-car fa-xl"></i><p>A69 / B6318</p></div>
+					<div class="icon"><i class="fa-solid fa-bus fa-xl"></i><p>AD122</p></div>
+					<div class="icon"><i class="fa-solid fa-bus fa-xl"></i><p>685</p></div>
+					<div class="icon"><i class="fa-solid fa-train fa-xl"></i><p>Bardon Mill</p></div>
+				</div>
+				<div id="map" style="height:calc(min(800px, 80vh))"></div>
+			</section>
+			<section id="booking" class="active">
+				<article>
+					<h3>Book Direct</h3>
+					<div style='display:flex;align-items:center;justify-content:center;'>
+						<form onsubmit="sendEmail()" style="display:flex;flex-direction:column;">
+							<input type="text" name="name" placeholder="full name">
+							<input type="email" name="email" placeholder="email">
+							<textarea rows="5" name="message"  placeholder="message"></textarea>
+							<input type="submit" name="submit" value="Submit">
+						</form>
+					</div>
+				</article>
+				<article>
+					<!-- <iframe src='https://www.airbnb.co.uk/embeddable/home?id=309005' frameborder='0' scrolling='no' width="100%" height="600px" style="top:-17px;left:-9px"></iframe> -->
+					<!-- <iframe data-src='https://www.airbnb.co.uk/embeddable/home?id=309005' frameborder='0' width='1000' height='1000' scrolling='no' style='position:relative;top:-17px;left:-9px;max-width:1000px;max-height:1000px;'></iframe> -->
+				</article>
+				<article> calendar </article>
+				<article> t&c </article>
+			</section>
+		</main>
+		<footer>
+			<img src="www/flag.png">
+			<img src="www/4star.png">
+			<img src="www/m1.png">
+			<img src="www/cyclists.png">
+			<img src="www/walkers.png">
+			<p style="font-size:.7em;">Homemade</p>
+		</footer>
+	</body>
+</html>
+<script>
+	// Navigator
+	const navs = document.querySelectorAll('.nav');
+	const sections = document.querySelectorAll('section');
+	navs.forEach(link => {
+		link.addEventListener('click', event => {
+			event.preventDefault();
+			sections.forEach(section => {
+				section.classList.remove('active');
+				if (section.getAttribute('id') === link.getAttribute('href').substring(1)) {
+					section.classList.add('active');
+				}
+			});
+			navs.forEach(otherLink => {
+				otherLink.classList.remove('active');
+			});
+			link.classList.add('active');
+		});
+	});
+
+
+	// Gallery
+	class Gallery {
+		constructor() {
+			this.currentIndex = 0;
+			let gallery = document.querySelector('#gallery');
+			this.images = gallery.querySelectorAll('img');
+			this.images[this.currentIndex].classList.add('active');
+			setInterval(() => this.showNext(), 10000);
+			gallery.addEventListener('click', () => this.showNext());
+		}
+		showNext() {
+			this.images[this.currentIndex].classList.remove('active');
+			this.currentIndex = (this.currentIndex + 1) % this.images.length;
+			this.images[this.currentIndex].classList.add('active');
+		}
+	}
+	const gallery = new Gallery();
+
+
+	// Map
+	var map = L.map('map').setView([54.99895, -2.36225], 13);
+	L.tileLayer(
+		'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+		{ attribution: '&copy; OpenStreetMap contributors' },
+	).addTo(map);
+	const parser = new DOMParser();
+	function editIcon(icon = 'location-dot') {
+		return function (feature, latlng) {
+			return L.marker(latlng, {
+				icon: L.divIcon({
+					html: `<i class="fa-solid fa-${icon}"></i>`,
+					className: ''
+				})
+			})
+		}
+	}
+	function addFeature(feature, popup, icon) {
+		fetch(`https://overpass-api.de/api/interpreter?data=[out:xml];${feature};out geom;`)
+			.then(response => response.text())
+			.then(xml => osmtogeojson(parser.parseFromString(xml, "text/xml")))
+			.then(geojson => {
+				L.geoJSON(geojson, {
+					pointToLayer: editIcon(icon)
+				})
+					.bindPopup(popup)
+					.addTo(map);
+			});
+	}
+	
+	addFeature('node(4836256938)', "<a href='https://highshield.uk'>High&nbsp;Shield Cottage</a>", 'house fa-xl')
+
+	addFeature('relation(7447967)', "AD122<br><a href='https://www.gonortheast.co.uk/services/GNE/AD12'>Services</a><br><a href='https://www.gonortheast.co.uk/ad122/'>Fares</a>", 'bus')
+	addFeature('relation(2588073)', "<a href='https://www.northernrailway.co.uk/'>Newcastle and Carlisle Railway</a>", 'train')
+	addFeature('node(612567287)', "<a href='https://www.stagecoachbus.com/routes/north-east/685/haltwhistle-market-place-hexham-bus-station/xmbo685.i'>685 Bus Hexham - Haltwhistle</a>", 'bus')
+
+	addFeature('relation(5538074)', "<a href='https://hadrianswallcountry.co.uk/'>Hadrian's Wall</a>", "camera")
+	addFeature('way(273121408)', "High&nbsp;Shield&nbsp;Crags<br>Crag&nbsp;Lough", null)
+	addFeature('node(5001767865)', "<a href='https://www.thesill.org.uk/'>YHA&nbsp;The&nbsp;Sill</a>")
+	addFeature('node(10829121139)', "<a href='https://www.vindolanda.com/'>Vindolanda</a>", "camera")
+
+
+	// Email
+	function sendEmail() {
+		console.log('ImplementatonError: sendMail not yet implemented');
+		// Email.send({
+		// 	Host: "smtp.elasticemail.com",
+		// 	Username: "username",
+		// 	Password: "password",
+		// 	To: 'them@website.com',
+		// 	From: "you@isp.com",
+		// 	Subject: "This is the subject",
+		// 	Body: "And this is the body"
+		// }).then(
+		// 	message => alert(message)
+		// );
+	}
+</script>

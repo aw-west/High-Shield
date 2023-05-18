@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+
+* {
+	/* background: #0001; */
+}
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+body {
+	font-family: 'Josefin Sans';
+	width: calc(min(600px, 100vw));
+	margin: auto;
+}
+header {
+	width: calc(100% - 20px);
+	height: 4em;
+	margin: 10px 0;
+	background-color: antiquewhite;
+	padding: 10px;
+	border-radius: 5px;
+}
+main {
+	min-height: calc(100vh - 140px - 2em);
+}
+section {
+	margin-top: 5px;
+	background-color: antiquewhite;
+	padding: 10px;
+	border-radius: 5px;
+}
+footer {
+	width: calc(100% - 20px);
+	height: 40px;
+	text-align: right;
+	margin: 10px 0;
+	background-color: antiquewhite;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+
+.icon {
+	width: 80px;
+	text-align: center;
+}
+.icon p {
+	margin: .5em 0 0 0;
+}
+
+
+#gallery img {
+	opacity: 0;
+	transition: opacity ease-in-out .2s;
+}
+#gallery img.active {
+	opacity: 1;
+}
