@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
 
 * {
 	/* background: #0001; */
@@ -10,7 +10,7 @@ img {
 	max-height: 100%;
 }
 body {
-	font-family: 'Josefin Sans';
+	font-family: Josefin Sans;
 	width: calc(min(1200px, 100vw - 30px));
 	margin: auto;
 }
@@ -41,7 +41,6 @@ footer {
 	border-radius: 5px;
 }
 
-
 .icon {
 	width: 80px;
 	text-align: center;
@@ -49,7 +48,6 @@ footer {
 .icon p {
 	margin: .5em 0 0 0;
 }
-
 
 #gallery {
 	height: calc(.75 * min(100vw - 60px, 1200px));
