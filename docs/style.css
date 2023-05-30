@@ -50,7 +50,7 @@ footer {
 }
 
 #gallery {
-	height: calc(2/3 * min(100vw - 60px, 1200px));
+	height: calc(.75 * min(100vw - 60px, 1200px));
 }
 #gallery img {
 	opacity: 0;
@@ -61,5 +61,5 @@ footer {
 }
 
 #map {
-	height: calc(2/3 * min(100vw - 60px, 1200px));
+	height: calc(.75 * min(100vw - 60px, 1200px));
 }
