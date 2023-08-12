@@ -4,7 +4,7 @@ function editIcon(icon) {
 	return function (feature, latlng) {
 		return L.marker(latlng, {
 			icon: L.divIcon({
-				html: `<i class='fa-solid fa-${icon}'></i>`,
+				html: `<i class='fa-solid fa-xl fa-${icon}'></i>`,
 				className: 'mapIcon',
 			})
 		})
@@ -28,7 +28,7 @@ function addFeature(query, popup='', icon='location-dot', style={}) {
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function mapAddFeatures() {
-	addFeature('node(4836256938)', `<a href='https://highshield.uk'>High&nbsp;Shield Cottage</a>`, icon='house fa-xl')
+	addFeature('node(4836256938)', `<a href='https://highshield.co.uk'>High&nbsp;Shield Cottage</a>`, icon='2xl fa-house')
 	await sleep(2000);
 	// map.flyTo([54.9906523,-2.3612414], 13);
 	addFeature('(relation(5538074);way(273121408);)', `<a href='https://hadrianswallcountry.co.uk/'>Hadrian's Wall</a>`, 'camera', {color:'#BF5817'})
@@ -58,10 +58,10 @@ async function mapAddFeatures() {
 	// map.flyTo([54.9906523,-2.3612414], 9);
 	addFeature('(way(181865155);node(9682921038);)', `<a href='https://www.nwt.org.uk/nature-reserves/greenlee-lough'>Greenlee Lough Nature Reserve</a>`, 'tree', {weight:1})
 	addFeature('node(999824915)', `<a href='https://www.nationaltrust.org.uk/visit/north-east/allen-banks-and-staward-gorge'>Allen Banks and Staward Gorge</a>`, 'tree')
-	addFeature('relation(1168821)', `Northumberland<br><a href='https://www.northumberlandnationalpark.org.uk/'>National Park</a><br><a href='https://www.visitnorthumberland.com/explore/things-to-do/attractions/great-outdoors/northumberland-dark-sky-park'>Dark Sky Park</a>`, 'tree', {weight:1,opacity:.1})
+	// addFeature('relation(1168821)', `Northumberland<br><a href='https://www.northumberlandnationalpark.org.uk/'>National Park</a><br><a href='https://www.visitnorthumberland.com/explore/things-to-do/attractions/great-outdoors/northumberland-dark-sky-park'>Dark Sky Park</a>`, 'tree', {weight:1,opacity:.1})
 }
 
-var map = L.map('map').setView([54.9906523,-2.3612414], 13);
+var map = L.map('map').setView([54.990,-2.362], 13);
 L.tileLayer(
 	'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	{ attribution: '&copy; OpenStreetMap contributors' },
